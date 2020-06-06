@@ -1,0 +1,19 @@
+{
+  "name": "assignment_2",
+  "version": "1.0.0",
+  "description": "Individual Repository for CSCI 5709 course Assignment 2 [Group 24]",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deep-muni94/CSCI-5709-Assignment-2-B00828375.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deep-muni94/CSCI-5709-Assignment-2-B00828375/issues"
+  }
+}
