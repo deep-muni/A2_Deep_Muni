@@ -15,5 +15,8 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/deep-muni94/CSCI-5709-Assignment-2-B00828375/issues"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
