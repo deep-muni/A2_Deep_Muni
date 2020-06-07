@@ -1,5 +1,6 @@
 import React from "react";
 import './Navigation.css';
+import {Link} from "react-router-dom";
 
 const {Component} = require("react");
 
@@ -53,7 +54,7 @@ class Navigation extends Component {
                                 return(
                                     <li key={index}>
                                         <div className="label">{item.name}</div>
-                                        <a className="link"/>
+                                        <Link to={item.url} className="link"/>
                                     </li>
                                 );
                             })
@@ -68,7 +69,7 @@ class Navigation extends Component {
                                     <li className="item" key={index}>
                                         <div className="label">{item.name}</div>
                                         <div className="arrow"/>
-                                        <a className="link"/>
+                                        <Link to={item.url} className="link"/>
                                     </li>
                                 );
                             })
