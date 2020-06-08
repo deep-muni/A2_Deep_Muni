@@ -17,12 +17,11 @@ class Register extends Component {
                 cp_err: false,
             },
             error: false,
-            filled: false,
-            initial: true
         };
 
         this.validate = this.validate.bind(this);
         this.register = this.register.bind(this);
+        this.checkPassMatch = this.checkPassMatch.bind(this);
     }
 
     validate(e){
@@ -101,6 +100,7 @@ class Register extends Component {
                         })
                     });
                 }
+                this.checkPassMatch(e.target.value);
                 break;
             case 'cpass':
                 if(e.target.value === document.getElementById('pass').value){
@@ -125,27 +125,49 @@ class Register extends Component {
         });
     }
 
+    checkPassMatch(val){
+        if(val === document.getElementById('cpass').value){
+            this.setState({
+                validation: Object.assign({}, this.state.validation, {
+                    cp_err: false,
+                })
+            });
+        }else{
+            this.setState({
+                validation: Object.assign({}, this.state.validation, {
+                    cp_err: true,
+                })
+            });
+        }
+    }
+
+    checkBlank(){
+        const fields = document.getElementsByClassName('inp');
+        for(const field of fields){
+            if(field.value === ''){
+                return false;
+            }
+        }
+        return true;
+    }
+
     register(){
-        const hasError = Object.keys(this.state.validation).some(val => this.state.validation[val]);
+        let hasError = Object.keys(this.state.validation).some(val => this.state.validation[val]);
+        if(!this.checkBlank()){
+            hasError = true;
+        }
         if(hasError){
             this.setState({
                 error: true
             });
-        }else{
-            if(this.state.initial){
+            setTimeout(() => {
                 this.setState({
-                    filled: true
+                    error: false,
                 });
-            }else{
-                this.props.history.push('/login');
-            }
+            },2500);
+        }else{
+            this.props.history.push('/login');
         }
-        setTimeout(() => {
-            this.setState({
-                error: false,
-                filled: false
-            });
-        },2500);
     }
 
     render() {
@@ -197,7 +219,6 @@ class Register extends Component {
                     </form>
                     <div className="input-section">
                         {this.state.error ? <div className="submitError">Please correct the errors!!</div> : null}
-                        {this.state.filled ? <div className="submitError">Please fill the form!!</div> : null}
                         <button className="submit" onClick={this.register}>Register</button>
                     </div>
                     <div className="redirect">

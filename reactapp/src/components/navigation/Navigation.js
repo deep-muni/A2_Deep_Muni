@@ -63,6 +63,7 @@ class Navigation extends Component {
                             })
                         }
                     </ul>
+                    <Link to={'/'}><div className="logo"/></Link>
                 </div>
                 <div className={this.state.showing ? "side-panel show-panel" : "side-panel"}>
                     <ul>

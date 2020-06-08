@@ -1,5 +1,5 @@
 .bar{
-    background-color: #142850;
+    background-color: #0073b1;
     padding: 10px 20px;
     height: 30px;
 }
@@ -16,7 +16,7 @@
 }
 
 .side-panel{
-    background-color: #142850;
+    background-color: #0073b1;
     width: 0;
     padding: 0;
     height: 0;
@@ -49,7 +49,7 @@
 }
 
 .label{
-    color: #DAE1E7;
+    color: #ffffff;
     font-family: Arial, serif;
     font-size: 20px;
     line-height: 24px;
@@ -66,7 +66,7 @@
 }
 
 .item:hover{
-    background: #DAE1E7;
+    background: #ffffff;
 }
 
 .item:hover .label{
@@ -79,8 +79,8 @@
 
 .search-bar{
     float: left;
-    margin: 0 50px 0 100px;
-    width: 50%;
+    margin: 0 0 0 100px;
+    width: 30%;
     transition: margin 0.3s ease-out;
 }
 
@@ -102,7 +102,7 @@
     border: none;
     font-size: 21px;
     line-height: 30px;
-    background-color: #DAE1E7;
+    background-color: #ffffff;
     color: #142850;
     border-radius: 0;
 }
@@ -111,7 +111,7 @@
     float: left;
     width: 50px;
     height: 30px;
-    background: #DAE1E7 url("raw/search_blue.png") center center no-repeat;
+    background: #ffffff url("raw/search_blue.png") center center no-repeat;
     transition: background 0.2s linear;
 }
 
@@ -121,7 +121,7 @@
 }
 
 .right{
-    float: right;
+    float: left;
 }
 
 .right li{
@@ -135,7 +135,7 @@
 }
 
 .right .label{
-    color: #dae1e7;
+    color: #ffffff;
     display: block;
     padding: 0 5px;
     font-family: Arial, serif;
@@ -145,7 +145,7 @@
 }
 
 .right li:hover{
-    background-color: #DAE1E7;
+    background-color: #ffffff;
 }
 
 .right li:hover .label{
@@ -164,7 +164,18 @@
     display: none;
 }
 
-@media only screen and (max-width: 1010px) {
+.logo{
+    width: 200px;
+    height: 30px;
+    float: right;
+    background-image: url("raw/logo.png");
+}
+
+@media only screen and (max-width: 1050px) {
+
+    .logo{
+        display: none;
+    }
 
     .search-bar{
         width: 80%;
