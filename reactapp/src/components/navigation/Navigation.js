@@ -14,10 +14,13 @@ class Navigation extends Component {
         }
 
         this.side_panel = [
-            {'name': 'Account', 'url': 'account'},
-            {'name': 'Category', 'url': 'category'},
-            {'name': 'Help', 'url': 'help'},
-            {'name': 'Admin', 'url': 'admin'},
+            {'name': 'Cart', 'url': 'cart', cname: 'item hide'},
+            {'name': 'Login', 'url': 'login', cname: 'item hide' },
+            {'name': 'Register', 'url': 'register', cname: 'item hide'},
+            {'name': 'Account', 'url': 'account', cname: 'item'},
+            {'name': 'Category', 'url': 'category', cname: 'item'},
+            {'name': 'Help', 'url': 'help', cname: 'item'},
+            {'name': 'Admin', 'url': 'admin', cname: 'item'}
         ];
 
         this.navigate = [
@@ -40,7 +43,7 @@ class Navigation extends Component {
     render() {
         return (
             <div>
-                <div className="bar">
+                <nav className="bar">
                     <div className="menu" onClick={this.toggle}/>
                     <div className={this.state.showing ? "search-bar search-move" : "search-bar"}>
                         <div className="search">
@@ -60,13 +63,14 @@ class Navigation extends Component {
                             })
                         }
                     </ul>
-                </div>
+                    <Link to={'/'}><div className="logo"/></Link>
+                </nav>
                 <div className={this.state.showing ? "side-panel show-panel" : "side-panel"}>
                     <ul>
                         {
                             this.side_panel.map((item,index) => {
                                 return(
-                                    <li className="item" key={index}>
+                                    <li className={item.cname} key={index}>
                                         <div className="label">{item.name}</div>
                                         <div className="arrow"/>
                                         <Link to={item.url} className="link"/>
@@ -76,7 +80,6 @@ class Navigation extends Component {
                         }
                     </ul>
                 </div>
-
             </div>
         );
     }

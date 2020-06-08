@@ -5,11 +5,13 @@ import Routes from "./components/routes/routes";
 
 function App() {
   return (
-    <div className="App">
       <Router>
-        <Routes/>
+        <div className="App">
+
+            <Routes/>
+
+        </div>
       </Router>
-    </div>
   );
 }
 

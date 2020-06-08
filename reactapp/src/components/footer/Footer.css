@@ -1,0 +1,77 @@
+.foot-area{
+    background-color: #0073b1;
+    position: relative;
+    height: 350px;
+    font-family: Arial, serif;
+}
+
+.logo_1{
+    background-image: url("raw/logo_1.png");
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: 30px;
+}
+
+.listing{
+    margin-left: 300px;
+    padding: 20px 100px;
+}
+
+.lists{
+    float: left;
+    margin-right: 150px;
+}
+
+.listing .lists:last-child{
+    margin-right: 0;
+}
+
+.head{
+    color: #ffffff;
+    padding-left: 5px;
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 700;
+}
+
+.items{
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 25px;
+    padding: 5px;
+    position: relative;
+    width: 170px;
+}
+
+.items:hover{
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+.items i{
+    width: 10px;
+    margin-right: 20px;
+    color: #ffffff;
+}
+
+.items .label{
+    color: #ffffff;
+}
+
+.items:hover i{
+    color: #27496D;
+}
+
+.items:hover .label{
+    color: #27496D;
+}
+
+.visit{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
