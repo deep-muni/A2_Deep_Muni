@@ -1,36 +1,64 @@
+.wrapper{
+    height: 100vh;
+    padding: 20px 0;
+    background-color: #d7d3ba;
+}
+
 .form_area{
-    max-width: 300px;
-    margin: 50px auto;
-    background-color: #008B8B;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: transparent;
     padding: 20px;
     font-family: Arial, serif;
     border-radius: 10px;
     position: relative;
+    transform: translate(0);
+    transition: 2s tranform linear;
+}
+
+.onerror{
+    animation-name: example;
+    animation-duration: 0.1s;
+}
+
+@keyframes example {
+    0% {transform: translateX(10px);}
+    20% {transform: translateX(-10px);}
+    40% {transform: translateX(10px);}
+    60% {transform: translateX(-10px);}
+    80% {transform: translateX(10px);}
+    100% {transform: translateX(-10px);}
 }
 
 .input-section{
     position: relative;
-    padding: 5px 0 10px;
+    padding: 7px 0;
 }
 
 label{
     position: absolute;
     top: -5px;
     left: 0;
-    color: #ffffff;
+    color: #000000;
     font-size: 15px;
 }
 
 .inp{
-    display: block;
     margin: 10px 0;
+    box-sizing : border-box;
     width: 100%;
-    height: 30px;
+    padding: 0 10px;
+    height: 32px;
     font-size: 20px;
-    border-radius: 5px;
+    border-radius: 2px;
     outline: none;
     background-color: #ffffff;
-    border: 2px solid #ffffff;
+    border: 1px solid #8f8f8f;
+    transition: 0.2s border linear;
+}
+
+.inp:hover{
+    border: 1px solid #000000;
 }
 
 .inp:focus{
@@ -40,29 +68,28 @@ label{
 .submit{
     width: 100%;
     margin-top: 10px;
-    height: 38px;
+    height: 50px;
     border-radius: 5px;
     outline: none;
-    font-size: 20px;
-    background-color: #ffffff;
-    color: #142850;
-    border: 1px solid #ffffff;
+    font-size: 25px;
+    background-color: #0073b1;
+    color: #ffffff;
+    border: 1px solid #0073b1;
 }
 
 .submit:active{
-    transform: translate(2px, 2px);
+    transform: translate(1px, 1px);
 }
 
 .submit:focus{
-    border: 1px solid #ffffff;
+    border: 1px solid #0073b1;
     box-shadow: none;
 }
 
 .submit:hover{
     cursor: pointer;
-    background-color: #008B8B;
-    border: 1px solid #494343;
-    box-shadow: 0 0 2px 3px #494343;
+    background-color: #006097;
+    border: 1px solid #006097;
     color: #ffffff;
 }
 
@@ -70,6 +97,30 @@ label{
     position: absolute;
     bottom: 0;
     right: 0;
-    color: #af0606;
+    color: red;
     font-size: 15px;
+}
+
+.submitError{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: red;
+    font-size: 15px;
+}
+
+.redirect{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.linkLogin{
+    text-decoration: underline;
+    color: #0073b1;
+}
+
+.linkLogin:hover{
+    text-decoration: underline;
+    color: #006097;
 }
