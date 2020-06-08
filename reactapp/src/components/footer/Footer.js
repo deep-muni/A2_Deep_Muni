@@ -34,7 +34,7 @@ class Footer extends Component {
             <footer className="foot-area">
                 <div className="logo_1"/>
                 <div className="listing">
-                    <div className="lists">
+                    <div className="lists floating_1">
                         <p className="head">Kart</p>
                         <ul>
                             {
@@ -49,7 +49,7 @@ class Footer extends Component {
                             }
                         </ul>
                     </div>
-                    <div className="lists">
+                    <div className="lists floating_2">
                         <p className="head">Social</p>
                         <ul>
                             {
@@ -65,7 +65,7 @@ class Footer extends Component {
                             }
                         </ul>
                     </div>
-                    <div className="lists">
+                    <div className="lists floating_3">
                         <p className="head">Navigate</p>
                         <ul>
                             {

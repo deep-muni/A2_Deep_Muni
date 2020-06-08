@@ -31,7 +31,7 @@
 }
 
 .show-panel{
-    width: 200px;
+    width: 125px;
     height: auto;
     padding: 10px;
 }
@@ -85,7 +85,7 @@
 }
 
 .search-move{
-    margin: 0 50px 0 200px;
+    margin: 0 30px 0 150px;
 }
 
 .search{
@@ -132,6 +132,10 @@
     transition: background-color 0.2s linear;
     text-align: center;
     position: relative;
+}
+
+.right li:last-child{
+    margin-right: 0;
 }
 
 .right .label{
