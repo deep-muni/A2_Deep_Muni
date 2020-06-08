@@ -43,7 +43,7 @@ class Navigation extends Component {
     render() {
         return (
             <div>
-                <div className="bar">
+                <nav className="bar">
                     <div className="menu" onClick={this.toggle}/>
                     <div className={this.state.showing ? "search-bar search-move" : "search-bar"}>
                         <div className="search">
@@ -64,7 +64,7 @@ class Navigation extends Component {
                         }
                     </ul>
                     <Link to={'/'}><div className="logo"/></Link>
-                </div>
+                </nav>
                 <div className={this.state.showing ? "side-panel show-panel" : "side-panel"}>
                     <ul>
                         {
@@ -80,7 +80,6 @@ class Navigation extends Component {
                         }
                     </ul>
                 </div>
-
             </div>
         );
     }
