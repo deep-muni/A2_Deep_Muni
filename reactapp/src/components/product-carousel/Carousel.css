@@ -1,0 +1,54 @@
+.carousel-area{
+    overflow: hidden;
+    padding: 50px;
+    background-color: #0073b1;
+}
+
+.heading1{
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Pacifico', cursive;
+    font-size: 40px;
+    letter-spacing: 4px;
+}
+
+.image-section{
+    height: auto;
+    max-width: 500px;
+    margin: 25px auto;
+    padding: 10px 40px;
+    position: relative;
+}
+
+.image{
+    width: 100%;
+    box-shadow: 0 0 5px 10px #8f8f8f;
+    height: auto;
+}
+
+.before, .after{
+    position: absolute;
+    top: 50%;
+    font-size: 50px;
+    margin-top: -50px;
+    cursor: pointer;
+    width: 28px;
+    padding: 0 5px;
+    color: #ffffff;
+}
+
+.before{
+    left: -20px;
+}
+
+.after{
+    right: -20px;
+}
+
+.before:hover, .after:hover {
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: #0073b1;
+}
+
+

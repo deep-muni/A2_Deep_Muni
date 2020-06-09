@@ -2,6 +2,7 @@
     background-color: #0073b1;
     padding: 10px 20px;
     height: 30px;
+    position: relative;
 }
 
 .menu{
@@ -24,6 +25,8 @@
     overflow-y: hidden;
     transition: width 150ms linear, padding 150ms linear;
     border-radius: 0 0 20px 0;
+    left: 0;
+    top: 50px;
 }
 
 .side-panel li{
@@ -192,12 +195,12 @@
     }
 }
 
-@media only screen and (max-width: 720px){
+@media only screen and (max-width: 750px){
     .logo{
         display: none;
     }
     .search-bar{
-       width: 80%;
+       width: 75%;
     }
 }
 

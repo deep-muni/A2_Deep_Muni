@@ -42,29 +42,27 @@ class Navigation extends Component {
 
     render() {
         return (
-            <div>
-                <nav className="bar">
-                    <div className="menu" onClick={this.toggle}/>
-                    <div className={this.state.showing ? "search-bar search-move" : "search-bar"}>
-                        <div className="search">
-                            <input type="text" id="search" placeholder="Search"/>
-                        </div>
-                        <div className="search-icon"/>
+            <nav className="bar">
+                <div className="menu" onClick={this.toggle}/>
+                <div className={this.state.showing ? "search-bar search-move" : "search-bar"}>
+                    <div className="search">
+                        <input type="text" id="search" placeholder="Search"/>
                     </div>
-                    <ul className="right">
-                        {
-                            this.navigate.map((item, index) => {
-                                return(
-                                    <li key={index}>
-                                        <div className="label">{item.name}</div>
-                                        <Link to={item.url} className="link"/>
-                                    </li>
-                                );
-                            })
-                        }
-                    </ul>
-                    <Link to={'/'}><div className="logo"/></Link>
-                </nav>
+                    <div className="search-icon"/>
+                </div>
+                <ul className="right">
+                    {
+                        this.navigate.map((item, index) => {
+                            return(
+                                <li key={index}>
+                                    <div className="label">{item.name}</div>
+                                    <Link to={item.url} className="link"/>
+                                </li>
+                            );
+                        })
+                    }
+                </ul>
+                <Link to={'/'}><div className="logo"/></Link>
                 <div className={this.state.showing ? "side-panel show-panel" : "side-panel"}>
                     <ul>
                         {
@@ -80,7 +78,7 @@ class Navigation extends Component {
                         }
                     </ul>
                 </div>
-            </div>
+            </nav>
         );
     }
 }

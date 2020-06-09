@@ -17,7 +17,9 @@
 }
 
 .listing{
+    float: right;
     margin-left: 300px;
+    margin-right: 100px;
     padding: 20px 10px 20px 50px;
     overflow: hidden;
 }
@@ -102,6 +104,10 @@
 }
 
 @media only screen and (max-width: 550px) {
+
+    .listing{
+        float: left;
+    }
 
     .logo_1{
         position: relative;
