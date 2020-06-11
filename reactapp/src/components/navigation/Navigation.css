@@ -83,8 +83,9 @@
 .search-bar{
     float: left;
     margin: 0 0 0 100px;
-    width: 30%;
-    transition: margin 0.3s ease-out;
+    width: 400px;
+    transition: margin 0.3s ease-out, width 0.3s ease-out;
+    position: relative;
 }
 
 .search-move{
@@ -93,8 +94,9 @@
 
 .search{
     float: left;
-    width: 80%;
+    width: 350px;
     overflow: hidden;
+    transition: width 0.3s ease-out;
 }
 
 #search{
@@ -115,7 +117,7 @@
     width: 50px;
     height: 30px;
     background: #ffffff url("raw/search_blue.png") center center no-repeat;
-    transition: background 0.2s linear;
+    transition: background 0.2s linear, width 0.3s ease-out;
 }
 
 .search-icon:hover{
@@ -123,7 +125,23 @@
     cursor: pointer;
 }
 
+.suggestion{
+    margin-top: 10px;
+    background-color: #0073b1;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 360px;
+    max-height: 170px;
+    padding: 10px 20px;
+    overflow-y: scroll;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    transition: width 0.3s ease-out;
+}
+
 .right{
+    margin-left: 50px;
     float: left;
 }
 
@@ -167,7 +185,7 @@
     bottom: 0;
 }
 
-.hide{
+.hide-nav{
     display: none;
 }
 
@@ -179,10 +197,9 @@
     display: block;
 }
 
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1120px) {
 
     .search-bar{
-        width: 60%;
         margin: 0 10px 0 30px;
     }
 
@@ -190,24 +207,28 @@
         display: none;
     }
 
-    .hide{
+    .hide-nav{
         display: block;
     }
 }
 
-@media only screen and (max-width: 750px){
+@media only screen and (max-width: 730px){
     .logo{
         display: none;
     }
-    .search-bar{
-       width: 75%;
-    }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 530px) {
 
     .search-bar{
-        margin: 0 20px;
+        width: 260px;
     }
 
+    .suggestion, .search{
+        width: 220px;
+    }
+
+    .search-icon{
+        width: 40px;
+    }
 }

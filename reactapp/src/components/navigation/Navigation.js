@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import './Navigation.css';
 import {Link, withRouter} from "react-router-dom";
+import Suggestion from "../suggestion/Suggestion";
 
 class Navigation extends Component {
 
@@ -8,13 +9,15 @@ class Navigation extends Component {
         super(props);
 
         this.state = {
-            showing: false
+            showing: false,
+            suggestion: [],
+            selectedTup: []
         }
 
         this.side_panel = [
-            {'name': 'Cart', 'url': '', cname: 'item hide'},
-            {'name': 'Login', 'url': '', cname: 'item hide' },
-            {'name': 'Register', 'url': 'register', cname: 'item hide'},
+            {'name': 'Cart', 'url': '', cname: 'item hide-nav'},
+            {'name': 'Login', 'url': '', cname: 'item hide-nav' },
+            {'name': 'Register', 'url': 'register', cname: 'item hide-nav'},
             {'name': 'Account', 'url': '', cname: 'item'},
             {'name': 'Category', 'url': '', cname: 'item'},
             {'name': 'Help', 'url': '', cname: 'item'},
@@ -27,8 +30,20 @@ class Navigation extends Component {
             {'name': 'Register', 'url': 'register'}
         ];
 
+        this.products = [
+            {'id': 1, 'name': 'Spring Onions'}, {'id': 2, 'name': 'Onions'}, {'id': 3, 'name': 'Yellow Potato'},
+            {'id': 4, 'name': 'White Potato'}, {'id': 5, 'name': 'Sweet Potato'}, {'id': 6, 'name': 'Green Pepper'},
+            {'id': 7, 'name': 'Yellow Pepper'}, {'id': 8, 'name': 'Red Onions'}, {'id': 9, 'name': 'Pink Cabbage'},
+            {'id': 10, 'name': 'Green Cabbage'}, {'id': 11, 'name': 'Broccoli'}, {'id': 12, 'name': 'Apple'},
+            {'id': 13, 'name': 'Pineapple'}, {'id': 14, 'name': 'Banana'}, {'id': 15, 'name': 'Kiwi'},
+            {'id': 16, 'name': 'Watermelon'}, {'id': 1, 'name': 'Straw Berry'}, {'id': 18, 'name': 'Black Berry'},
+            {'id': 19, 'name': 'Mushrooms'}, {'id': 20, 'name': 'Tomato'}, {'id': 21, 'name': 'Cherry Tomato'}
+        ]
+
         this.toggle = this.toggle.bind(this);
         this.validate = this.validate.bind(this);
+        this.showList = this.showList.bind(this);
+        this.itemClick = this.itemClick.bind(this);
 
     }
 
@@ -41,16 +56,56 @@ class Navigation extends Component {
 
     validate(e){
         if((e.type === "keydown" && e.keyCode === 13) || e.type === "click"){
-            let val = document.getElementById("search").value;
+            const val = document.getElementById("search").value;
             if(val === ""){
                 alert("Please enter a search string")
             }else{
-                this.props.history.push({
-                    pathname: '/result',
-                    search: '?q='+val,
-                });
+                this.props.history.push(
+                    '/result', {'id': val}
+                );
             }
         }
+    }
+
+    showList(e){
+        const userInp = e.target.value;
+        let suggestion = [];
+        if(userInp.length > 0){
+            suggestion = this.products.filter(item => {
+                return item.name.toLowerCase().includes(userInp.toLowerCase());
+            });
+        }
+        this.setState({
+            suggestion: suggestion
+        })
+    }
+
+    suggestionList(){
+        if(this.state.suggestion.length === 0){
+            return null;
+        }
+        return(
+            <div className="suggestion">
+                {
+                    this.state.suggestion.map((item, index) => {
+                        return <Suggestion key={index} name={item.name} onClick={this.itemClick}/>
+                    })
+                }
+            </div>
+        );
+    }
+
+    itemClick(e) {
+        document.getElementById("search").value = e.target.innerText;
+
+        const tup = this.state.suggestion.filter((t) => {
+            return t.name === e.target.innerText;
+        });
+
+        this.setState({
+            suggestion : [],
+            selectedTup: tup
+        });
     }
 
     render() {
@@ -59,9 +114,11 @@ class Navigation extends Component {
                 <div className="menu" onClick={this.toggle}/>
                 <div className={this.state.showing ? "search-bar search-move" : "search-bar"}>
                     <div className="search">
-                        <input type="text" id="search" placeholder="Search" onKeyDown={this.validate}/>
+                        <input type="text" id="search" placeholder="Search"
+                               onKeyDown={this.validate} onChange={this.showList}/>
                     </div>
                     <div className="search-icon" onClick={this.validate}/>
+                    {this.suggestionList()}
                 </div>
                 <ul className="right">
                     {
