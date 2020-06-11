@@ -1,7 +1,5 @@
 .wrapper{
     height: 100vh;
-    padding: 20px 0;
-    background-color: #d7d3ba;
 }
 
 .form_area{
@@ -41,6 +39,7 @@ label{
     left: 0;
     color: #000000;
     font-size: 15px;
+    font-style: italic;
 }
 
 .inp{

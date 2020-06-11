@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import './Register.css'
 import {Link} from "react-router-dom";
+import Navigation from "../navigation/Navigation";
+import Footer from "../footer/Footer";
 
 class Register extends Component {
 
@@ -8,224 +10,212 @@ class Register extends Component {
         super(props);
 
         this.state = {
-            validation: {
-                un_err: false,
-                fn_err: false,
-                ln_err: false,
-                dob_err: false,
-                pass_err: false,
-                cp_err: false,
-            },
-            error: false,
+            uname: {status: false, text: ''},
+            fname: {status: false, text: ''},
+            lname: {status: false, text: ''},
+            dob: {status: false, text: ''},
+            pass: {status: false, text: ''},
+            cpass: {status: false, text: ''},
+            main: {status: false, text: ''},
         };
 
-        this.validate = this.validate.bind(this);
         this.register = this.register.bind(this);
-        this.checkPassMatch = this.checkPassMatch.bind(this);
+        this.validate = this.validate.bind(this);
+        this.hasError = this.hasError.bind(this);
     }
 
     validate(e){
-        switch(e.target.id) {
+
+        const field = e.target;
+        let update = {};
+        let update_1 = {};
+
+        switch(e.target.id){
             case 'uname':
-                if(e.target.value === ''){
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            un_err: true,
-                        })
-                    });
+                if(field.value === ""){
+                    update = {status : true, text :'User Name is required'}
+                }else if(field.value.length < 4 || field.value.length > 21){
+                    update = {status : true, text :'Length between 4 & 21'}
                 }else{
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            un_err: false,
-                        })
-                    });
+                    update = {status : false, text :''}
                 }
+                this.setState({
+                    uname: update
+                });
                 break;
             case 'fname':
-                if(e.target.value === ''){
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            fn_err: true,
-                        })
-                    });
+                if(field.value === ""){
+                    update = {status : true, text :'First Name is required'}
+                }else if(field.value.length < 4 || field.value.length > 21){
+                    update = {status : true, text :'Length between 4 & 21'}
                 }else{
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            fn_err: false,
-                        })
-                    });
+                    update = {status : false, text :''}
                 }
+                this.setState({
+                    fname: update
+                });
                 break;
             case 'lname':
-                if(e.target.value === ''){
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            ln_err: true,
-                        })
-                    });
+                if(field.value === ""){
+                    update = {status : true, text :'Last Name is required'}
+                }else if(field.value.length < 4 || field.value.length > 21){
+                    update = {status : true, text :'Length between 4 & 21'}
                 }else{
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            ln_err: false,
-                        })
-                    });
+                    update = {status : false, text :''}
                 }
+                this.setState({
+                    lname: update
+                });
                 break;
             case 'dob':
-                if(e.target.value === ''){
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            dob_err: true,
-                        })
-                    });
+                console.log(field.value);
+                if(field.value === ""){
+                    update = {status : true, text :'Date of Birth is required'}
                 }else{
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            dob_err: false,
-                        })
-                    });
+                    update = {status : false, text :''}
                 }
+                this.setState({
+                    dob: update
+                });
                 break;
             case 'pass':
-                if(e.target.value === ''){
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            pass_err: true,
-                        })
-                    });
+                if(field.value === ""){
+                    update = {status : true, text :'Password is required'}
                 }else{
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            pass_err: false,
-                        })
-                    });
+                    update = {status : false, text :''}
                 }
-                this.checkPassMatch(e.target.value);
+                if(field.value !== document.getElementById('cpass').value){
+                    update_1 = {status : true, text :'Password does not match'}
+                }
+                this.setState({
+                    pass: update,
+                    cpass: update_1
+                });
                 break;
             case 'cpass':
-                if(e.target.value === document.getElementById('pass').value){
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            cp_err: false,
-                        })
-                    });
+                if(field.value === ""){
+                    update = {status : true, text :'Confirmed Password is required'}
+                }else if(field.value !== document.getElementById('pass').value){
+                    update = {status : true, text :'Password does not match'}
                 }else{
-                    this.setState({
-                        validation: Object.assign({}, this.state.validation, {
-                            cp_err: true,
-                        })
-                    });
+                    update = {status : false, text :''}
                 }
+                this.setState({
+                    cpass: update
+                });
                 break;
             default:
                 break;
         }
-        this.setState({
-            initial: false
-        });
     }
 
-    checkPassMatch(val){
-        if(val === document.getElementById('cpass').value){
+    register(){
+        if(this.checkBlank()){
             this.setState({
-                validation: Object.assign({}, this.state.validation, {
-                    cp_err: false,
-                })
+                main : {status: true, text: 'Please fill out empty fields!!'}
             });
+            setTimeout(() => {
+                this.setState({
+                    main : {status: false, text: ''}
+                });
+            },2500);
+        }else if(this.hasError()){
+            this.setState({
+                main : {status: true, text: 'Please correct the errors!!'}
+            });
+            setTimeout(() => {
+                this.setState({
+                    main : {status: false, text: ''}
+                });
+            },2500);
         }else{
-            this.setState({
-                validation: Object.assign({}, this.state.validation, {
-                    cp_err: true,
-                })
-            });
+            this.makeEmpty();
+            alert("User has been registered");
         }
     }
 
     checkBlank(){
         const fields = document.getElementsByClassName('inp');
-        for(const field of fields){
-            if(field.value === ''){
-                return false;
+
+        for(let field of fields){
+            if(field.value === ""){
+                return true;
             }
         }
-        return true;
+        return false;
+
     }
 
-    register(){
-        let hasError = Object.keys(this.state.validation).some(val => this.state.validation[val]);
-        if(!this.checkBlank()){
-            hasError = true;
-        }
-        if(hasError){
-            this.setState({
-                error: true
-            });
-            setTimeout(() => {
-                this.setState({
-                    error: false,
-                });
-            },2500);
-        }else{
-            this.props.history.push('/login');
+    hasError(){
+        return (this.state.uname.status || this.state.fname.status || this.state.lname.status ||
+            this.state.dob.status || this.state.pass.status || this.state.cpass.status);
+    }
+
+    makeEmpty(){
+        const fields = document.getElementsByClassName('inp');
+        for(const field of fields){
+            field.value = "";
         }
     }
 
     render() {
         return (
             <div className="wrapper">
-                <div className={this.state.error ? "form_area onerror" : "form_area"}>
+                <Navigation/>
+                <div className={this.state.main.status ? "form_area onerror" : "form_area"}>
                     <form>
                         <div className="input-section">
                             <label htmlFor="uname">User Name</label>
                             <input type="text" id="uname" className="inp"
                                    onBlur={this.validate} onChange={this.validate}/>
-                            {this.state.validation.un_err ? <div className="error">User Name is required</div> : null}
+                            {this.state.uname.status ? <div className="error">{this.state.uname.text}</div> : null}
                         </div>
 
                         <div className="input-section">
                             <label htmlFor="fname">First Name</label>
                             <input type="text" id="fname" className="inp"
                                    onBlur={this.validate} onChange={this.validate}/>
-                            {this.state.validation.fn_err ? <div className="error">First Name is required</div> : null}
+                            {this.state.fname.status ? <div className="error">{this.state.fname.text}</div> : null}
                         </div>
 
                         <div className="input-section">
                             <label htmlFor="lname">Last Name</label>
                             <input type="text" id="lname" className="inp"
                                    onBlur={this.validate} onChange={this.validate}/>
-                            {this.state.validation.ln_err ? <div className="error">Last Name is required</div>: null}
+                            {this.state.lname.status ? <div className="error">{this.state.lname.text}</div>: null}
                         </div>
 
                         <div className="input-section">
                             <label htmlFor="dob">Date of Birth</label>
                             <input type="date" id="dob" className="inp"
                                    onBlur={this.validate} onChange={this.validate}/>
-                            {this.state.validation.dob_err ? <div className="error">Date of Birth is required</div>: null}
+                            {this.state.dob.status ? <div className="error">{this.state.dob.text}</div>: null}
                         </div>
 
                         <div className="input-section">
                             <label htmlFor="pass">Password</label>
                             <input type="password" id="pass" className="inp"
                                    onBlur={this.validate} onChange={this.validate}/>
-                            {this.state.validation.pass_err ? <div className="error">Password is required</div> : null}
+                            {this.state.pass.status ? <div className="error">{this.state.pass.text}</div> : null}
                         </div>
 
                         <div className="input-section">
                             <label htmlFor="cpass">Confirm Password</label>
                             <input type="password" id="cpass" className="inp"
                                    onBlur={this.validate} onChange={this.validate}/>
-                            {this.state.validation.cp_err ? <div className="error">Password does not match</div> : null}
+                            {this.state.cpass.status ? <div className="error">{this.state.cpass.text}</div> : null}
                         </div>
                     </form>
                     <div className="input-section">
-                        {this.state.error ? <div className="submitError">Please correct the errors!!</div> : null}
+                        {this.state.main.status ? <div className="submitError">{this.state.main.text}</div> : null}
                         <button className="submit" onClick={this.register}>Register</button>
                     </div>
                     <div className="redirect">
                         <span>Already a User? </span>
-                        <Link className="linkLogin" to={"/login"}> Login</Link>
+                        <Link className="linkLogin" to={""}> Login</Link>
                     </div>
                 </div>
+                <Footer/>
             </div>
         );
     }
