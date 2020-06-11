@@ -20,11 +20,11 @@ class Footer extends Component {
             {'name': 'Twitter', 'link' : '', 'cname': 'fa fa-twitter icon'}
         ];
         this.list_3 = [
-            {'name': 'Login', 'link' : '/login'},
+            {'name': 'Login', 'link' : ''},
             {'name': 'Register', 'link' : '/register'},
-            {'name': 'About Us', 'link' : '/about'},
-            {'name': 'Contact Us', 'link' : '/contact'},
-            {'name': 'Help', 'link' : '/help'}
+            {'name': 'About Us', 'link' : ''},
+            {'name': 'Contact Us', 'link' : ''},
+            {'name': 'Help', 'link' : ''}
         ];
     }
 
