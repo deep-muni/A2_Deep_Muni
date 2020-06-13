@@ -7,14 +7,15 @@ class Brand extends Component {
             <div className="brand-section">
                 <p className="heading">Brands Associated</p>
                 <div className="brand-area">
-                    <div className="brand"/>
-                    <div className="brand"/>
-                    <div className="brand"/>
-                    <div className="brand"/>
-                    <div className="brand"/>
-                    <div className="brand"/>
-                    <div className="brand"/>
-                    <div className="brand"/>
+                    <div className="brand">Brand Image</div>
+                    <div className="brand">Brand Image</div>
+                    <div className="brand">Brand Image</div>
+                    <div className="brand">Brand Image</div>
+                    <div className="brand">Brand Image</div>
+                    <div className="brand">Brand Image</div>
+                    <div className="brand">Brand Image</div>
+                    <div className="brand">Brand Image</div>
+                    <div className="brand">Brand Image</div>
                 </div>
             </div>
         );
