@@ -18,6 +18,11 @@
     display: inline-block;
     background: #0073b1;
     border-radius: 20px;
+    line-height: 150px;
+    text-align: center;
+    color: #ffffff;
+    font-family: Arial, serif;
+    font-size: 30px;
 }
 
 .brand-area .brand:last-child{
