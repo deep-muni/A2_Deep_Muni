@@ -85,6 +85,10 @@
     bottom: 0;
 }
 
+.isDisabled{
+    pointer-events: none;
+}
+
 @media only screen and (max-width: 1050px) {
 
     .floating_3{

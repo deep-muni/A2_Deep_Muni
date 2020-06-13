@@ -143,20 +143,20 @@ class Register extends Component {
                     main : {status: false, text: ''}
                 });
             },2500);
-        }else if(this.policyNotSatisfied()){
+        }else if(this.hasError()){
             this.setState({
-                main : {status: true, text: 'Please follow password policy'},
+                main : {status: true, text: 'Please correct the errors!!'}
             });
-            this.showPolicy();
             setTimeout(() => {
                 this.setState({
                     main : {status: false, text: ''}
                 });
             },2500);
-        }else if(this.hasError()){
+        }else if(this.policyNotSatisfied()){
             this.setState({
-                main : {status: true, text: 'Please correct the errors!!'}
+                main : {status: true, text: 'Please follow password policy'},
             });
+            this.showPolicy();
             setTimeout(() => {
                 this.setState({
                     main : {status: false, text: ''}
@@ -286,7 +286,7 @@ class Register extends Component {
                     </div>
                     <div className="redirect">
                         <span>Already a User? </span>
-                        <Link className="linkLogin" to={""}> Login</Link>
+                        <Link className="linkLogin"> Login</Link>
                     </div>
                 </div>
                 <Footer/>

@@ -15,19 +15,19 @@ class Navigation extends Component {
         }
 
         this.side_panel = [
-            {'name': 'Cart', 'url': '', cname: 'item hide-nav'},
-            {'name': 'Login', 'url': '', cname: 'item hide-nav' },
+            {'name': 'Cart', 'url': '', cname: 'item hide-nav', linkClass: ' link linkDisable'},
+            {'name': 'Login', 'url': '', cname: 'item hide-nav', linkClass: ' link linkDisable'},
             {'name': 'Register', 'url': 'register', cname: 'item hide-nav'},
-            {'name': 'Account', 'url': '', cname: 'item'},
-            {'name': 'Category', 'url': '', cname: 'item'},
-            {'name': 'Help', 'url': '', cname: 'item'},
-            {'name': 'Admin', 'url': '', cname: 'item'}
+            {'name': 'Account', 'url': '', cname: 'item', linkClass: ' link linkDisable'},
+            {'name': 'Category', 'url': '', cname: 'item', linkClass: ' link linkDisable'},
+            {'name': 'Help', 'url': '', cname: 'item', linkClass: ' link linkDisable'},
+            {'name': 'Admin', 'url': '', cname: 'item', linkClass: ' link linkDisable'}
         ];
 
         this.navigate = [
-            {'name': 'Cart', 'url': ''},
-            {'name': 'Login', 'url': ''},
-            {'name': 'Register', 'url': 'register'}
+            {'name': 'Cart', 'url': '', cname: 'link linkDisable'},
+            {'name': 'Login', 'url': '', cname: 'link linkDisable'},
+            {'name': 'Register', 'url': 'register', cname: 'link'}
         ];
 
         this.products = [
@@ -57,6 +57,7 @@ class Navigation extends Component {
     validate(e){
         if((e.type === "keydown" && e.keyCode === 13) || e.type === "click"){
             const val = document.getElementById("search").value;
+            console.log(val);
             if(val === ""){
                 alert("Please enter a search string")
             }else{
@@ -126,7 +127,7 @@ class Navigation extends Component {
                             return(
                                 <li key={index}>
                                     <div className="label">{item.name}</div>
-                                    <Link to={item.url} className="link"/>
+                                    <Link to={item.url} className={item.cname}/>
                                 </li>
                             );
                         })
@@ -141,7 +142,7 @@ class Navigation extends Component {
                                     <li className={item.cname} key={index}>
                                         <div className="label">{item.name}</div>
                                         <div className="arrow"/>
-                                        <Link to={item.url} className="link"/>
+                                        <Link to={item.url} className={item.linkClass}/>
                                     </li>
                                 );
                             })
