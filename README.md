@@ -123,7 +123,18 @@ The code used for auto-suggestion is referred from the Tutorial 3. [8] [9]
 ## Deployment
 
 * I have deployed the application on Heroku which is integrated with the GitHub account.
+
+Live Link
+
+https://a2webdev.herokuapp.com/
+
 * I have created a node server which runs the build of react application. This was taught to us in Tutorial 2. [10]
+
+## Usage
+
+For search bar search "Yellow Potato". For this item there will be more than one card view on results page. For other products there is only one card view.
+
+For profile page, try to put some information and update it. Username cannot be changed by users.
 
 ## Acknowledgment
 
