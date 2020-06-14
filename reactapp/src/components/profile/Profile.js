@@ -103,11 +103,12 @@ class Profile extends Component {
             <div>
                 <Navigation/>
                 <div className="profile-area">
-                    <div className="profile-image"/>
+                    <div className="profile-image">Profile Image</div>
                     <div className="profile-details">
                         <form>
-                            <i class="fa fa-pencil edit" onClick={this.edit}/>
-                            {/*<div className="edit" onClick={this.edit}>EDIT</div>*/}
+                            <i className="fa fa-pencil edit" onClick={this.edit}>
+                                <span className="tag">Edit</span>
+                            </i>
                             <div className="input-section">
                                 <label htmlFor="uname">User Name</label>
                                 <input type="text" id="uname" className="inp" value="deepmuni94" disabled/>
@@ -138,7 +139,6 @@ class Profile extends Component {
                             {this.state.main.status ? <div className="submitError">{this.state.main.text}</div> : null}
                             <button className="submit" onClick={this.update}>Update</button>
                         </div>
-
                     </div>
                 </div>
                 <Footer/>

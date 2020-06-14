@@ -38,6 +38,11 @@
     color: #0073b1;
 }
 
+.tag{
+    font-family: Arial,serif;
+    margin-left: 10px;
+}
+
 .edit:hover{
     cursor: pointer;
 }
