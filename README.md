@@ -46,6 +46,8 @@ As a part of tutorial 1 our group had submitted a document stating the technolog
 
 For styling purpose, I have decided to apply my own CSS styling. To make the pages responsive I have written a media query. I have made the pages responsive till 400px in width.
 
+The application is tested and works on Google Chrome and MS Edge browsers.
+
 ## Justification
 
 * Color Scheme
