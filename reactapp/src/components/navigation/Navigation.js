@@ -15,6 +15,7 @@ class Navigation extends Component {
         }
 
         this.side_panel = [
+            {'name': 'Home', 'url': '', cname: 'item', linkClass: 'link'},
             {'name': 'Cart', 'url': '', cname: 'item hide-nav', linkClass: 'link linkDisable'},
             {'name': 'Login', 'url': '', cname: 'item hide-nav', linkClass: 'link linkDisable'},
             {'name': 'Register', 'url': 'register', cname: 'item hide-nav', linkClass: 'link'},
